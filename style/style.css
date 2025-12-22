@@ -1,0 +1,243 @@
+/* DATA MINING SUITE STYLESHEET
+    Created by Eca Well
+*/
+
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --primary-light: #eef2ff;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; }
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--bg); 
+    color: var(--text-main); 
+    line-height: 1.6;
+    margin: 0; 
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: auto; 
+    padding: 40px 20px; 
+}
+
+/* ==========================================
+   HEADER & BRANDING (ECA WELL)
+   ========================================== */
+header { 
+    text-align: center; 
+    margin-bottom: 50px; 
+}
+
+header h1 { 
+    font-size: 3rem; 
+    font-weight: 800; 
+    margin: 0; 
+    letter-spacing: -1px;
+}
+
+header h1 span { color: var(--primary); }
+
+.author-name { 
+    color: var(--text-muted); 
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+#tagline { font-size: 1.1rem; color: var(--text-muted); }
+
+/* ==========================================
+   DASHBOARD MENU
+   ========================================== */
+.dashboard-menu { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+}
+
+.menu-card { 
+    background: var(--card); 
+    padding: 40px; 
+    border-radius: 24px; 
+    text-align: center; 
+    cursor: pointer; 
+    border: 1px solid var(--border); 
+    box-shadow: var(--shadow); 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.menu-card:hover { 
+    transform: translateY(-12px); 
+    border-color: var(--primary); 
+    box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.1);
+}
+
+.menu-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+.menu-card h3 { margin: 10px 0; font-size: 1.5rem; }
+.menu-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* ==========================================
+   WORKSPACE ELEMENTS
+   ========================================== */
+.workspace-header h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; }
+
+.btn-back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.card { 
+    background: var(--card); 
+    border-radius: 20px; 
+    padding: 35px; 
+    border: 1px solid var(--border); 
+    margin-bottom: 40px; 
+    position: relative; 
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.step-num { 
+    position: absolute; 
+    top: -20px; 
+    right: 40px; 
+    font-size: 2.5rem; 
+    font-weight: 900; 
+    color: var(--border); 
+    background: var(--bg); 
+    padding: 0 15px; 
+    user-select: none;
+}
+
+.section-title { 
+    font-weight: 800; 
+    color: var(--primary); 
+    text-transform: uppercase; 
+    font-size: 0.85rem; 
+    margin-bottom: 20px; 
+    display: block; 
+    letter-spacing: 1.5px;
+}
+
+/* ==========================================
+   TABLES & RESULTS
+   ========================================== */
+.table-container { 
+    overflow-x: auto; 
+    background: white;
+    border-radius: 12px; 
+    border: 1px solid var(--border); 
+    margin-top: 20px; 
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th { background: #f8fafc; padding: 15px; font-weight: 700; border-bottom: 2px solid var(--border); }
+td { padding: 12px; border-bottom: 1px solid #f1f5f9; text-align: center; }
+tr:hover { background-color: #fcfcfd; }
+
+/* Status Labels */
+.val-1 { color: var(--success); font-weight: 700; }
+.val-0 { color: var(--text-muted); }
+
+/* Summary Results */
+.summary-box { 
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    background: var(--primary); 
+    color: white; 
+    padding: 30px; 
+    border-radius: 18px; 
+    margin-bottom: 30px; 
+    gap: 20px;
+}
+
+.summary-item { text-align: center; }
+.summary-item span { display: block; font-size: 0.8rem; text-transform: uppercase; opacity: 0.8; margin-bottom: 5px; }
+.summary-item b { font-size: 1.8rem; }
+
+/* ==========================================
+   FORMS & BUTTONS
+   ========================================== */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; }
+
+input, select { 
+    width: 100%; 
+    padding: 14px; 
+    border-radius: 12px; 
+    border: 1px solid var(--border); 
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+input:focus, select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px var(--primary-light); }
+
+button { 
+    font-family: inherit;
+    font-weight: 700; 
+    cursor: pointer; 
+    padding: 14px 25px; 
+    border-radius: 12px; 
+    border: none; 
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-success { background: var(--success); color: white; width: 100%; }
+.btn-accent { background: var(--accent); color: white; width: 100%; }
+
+/* ==========================================
+   OTHERS
+   ========================================== */
+.log-panel { 
+    background: #0f172a; 
+    color: #38bdf8; 
+    padding: 20px; 
+    border-radius: 15px; 
+    font-family: 'Fira Code', monospace; 
+    font-size: 0.8rem; 
+    margin-top: 30px; 
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.fade-in { animation: fadeIn 0.6s ease-out; }
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(15px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* Print Settings */
+@media print {
+    .printable-ignore { display: none !important; }
+    body { background: white; }
+    .card { border: none; box-shadow: none; padding: 0; margin-bottom: 50px; }
+    .container { max-width: 100%; padding: 0; }
+}

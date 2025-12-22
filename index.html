@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Mining Suite by Eca Well</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+
+<div class="container">
+    <header class="printable-ignore fade-in">
+        <h1>Data Mining <span>Suite</span></h1>
+        <h3 class="author-name">by Eca Well</h3> <p id="tagline">Silakan pilih metode analisis untuk memulai proyek Anda</p>
+    </header>
+
+    <div id="mainMenu" class="dashboard-menu">
+        <div class="menu-card" onclick="openWorkspace('apriori')">
+            <div class="menu-icon">🔗</div>
+            <h3>Association</h3>
+            <p>Mencari pola hubungan antar item menggunakan algoritma <b>Apriori</b> & Lift Ratio.</p>
+        </div>
+
+        <div class="menu-card" onclick="openWorkspace('classification')">
+            <div class="menu-icon">🏷️</div>
+            <h3>Classification</h3>
+            <p>Melakukan prediksi label pada data menggunakan metode <b>K-NN</b> atau <b>C4.5</b>.</p>
+        </div>
+
+        <div class="menu-card" onclick="openWorkspace('kmeans')">
+            <div class="menu-icon">📍</div>
+            <h3>Clustering</h3>
+            <p>Mengelompokkan data berdasarkan kemiripan dengan <b>K-Means</b> & X-Uji.</p>
+        </div>
+    </div>
+
+    <div id="workspace" style="display:none">
+        <button onclick="backToMenu()" class="btn-back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Kembali ke Menu Utama
+        </button>
+        
+        <div class="workspace-header">
+            <h2 id="activeAlgoName">Nama Algoritma</h2>
+            <hr style="border: 0; border-top: 2px solid var(--border); margin: 20px 0;">
+        </div>
+
+        <div class="card printable-ignore">
+            <span class="step-num">01</span>
+            <label class="section-title">Unggah Sumber Data</label>
+            <div class="input-group" style="display: flex; gap: 10px;">
+                <input type="file" id="fUpload" accept=".xlsx, .xls">
+                <button onclick="readExcel()" class="btn-primary" style="width: auto;">Proses File Excel</button>
+            </div>
+        </div>
+
+        <div id="configSection" class="card fade-in printable-ignore" style="display:none">
+            <span class="step-num">02</span>
+            <label class="section-title">Konfigurasi Atribut</label>
+            <div id="mappingUI"></div>
+            <button onclick="prepareParams()" class="btn-accent" style="margin-top: 20px;">Konfirmasi Atribut</button>
+        </div>
+
+        <div id="processSection" class="card fade-in printable-ignore" style="display:none">
+            <span class="step-num">03</span>
+            <label class="section-title">Parameter & Eksekusi</label>
+            <div id="paramsUI" class="grid" style="margin-bottom: 20px;"></div>
+            <button onclick="runAlgorithm()" class="btn-success">Jalankan Analisis Sekarang</button>
+            <div id="logPanel" class="log-panel" style="display:none"></div>
+        </div>
+
+        <div id="resultArea"></div>
+
+        <div id="exportControl" class="card fade-in printable-ignore" style="display:none; text-align: center;">
+            <span class="step-num">04</span>
+            <label class="section-title">Ekspor Laporan</label>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                <button onclick="generateReport()" class="btn-primary">Cetak PDF</button>
+                <button onclick="downloadExcel()" class="btn-success">Simpan Excel</button>
+                <button onclick="downloadCSV()" class="btn-accent">Simpan CSV</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+<script src="/script/main.js"></script>
+<script src="/script/apriori.js"></script>
+<script src="/script/kmeans.js"></script>
+<script src="/script/classification.js"></script>
+</body>
+</html>
