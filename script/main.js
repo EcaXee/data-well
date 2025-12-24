@@ -28,7 +28,7 @@ function openWorkspace(mode) {
         'kmeans': 'Clustering (K-Means)'
     };
 
-    // Menampilkan identitas "Data Mining by Eca Well" pada header workspace
+    // Menampilkan identitas "DATA MINING BY ECA WELL" pada header workspace
     document.getElementById('activeAlgoName').innerHTML = `
         <span style="font-size: 0.9rem; color: var(--primary); font-weight: 600; display: block; margin-bottom: 5px; letter-spacing: 1px;">
             DATA MINING BY ECA WELL
@@ -159,16 +159,24 @@ function prepareParams() {
             html += `<div class="form-group"><label>Jumlah Cluster (k)</label><input type="number" id="kmeansK" value="2"></div>`;
         }
     } else if (activeMode === 'apriori') {
+        // PERBAIKAN: Support & Confidence menggunakan desimal sesuai RapidMiner
         html = `
-            <div class="form-group"><label>Min. Support (Qty)</label><input type="number" id="mSup" value="2"></div>
-            <div class="form-group"><label>Min. Confidence (%)</label><input type="number" id="mConf" value="50"></div>`;
+            <div class="form-group">
+                <label>Min. Support (0.01 - 1)</label>
+                <input type="number" id="mSup" step="0.01" min="0.01" max="1" value="0.10">
+                <small style="color:var(--text-muted)">Gunakan titik untuk desimal (Contoh: 0.1)</small>
+            </div>
+            <div class="form-group">
+                <label>Min. Confidence (0.1 - 1)</label>
+                <input type="number" id="mConf" step="0.1" min="0.1" max="1" value="0.5">
+                <small style="color:var(--text-muted)">Gunakan titik untuk desimal (Contoh: 0.5)</small>
+            </div>`;
     }
 
     container.innerHTML = html;
     document.getElementById('processSection').style.display = 'block';
 }
 
-// Logika UI untuk menyembunyikan input K pada C4.5
 function toggleKInput() {
     const sub = document.getElementById('subAlgo').value;
     document.getElementById('knnKContainer').style.display = (sub === 'c45') ? 'none' : 'block';
@@ -232,7 +240,7 @@ function downloadExcel() {
     const wb = XLSX.utils.book_new();
     tables.forEach((table, i) => {
         const ws = XLSX.utils.table_to_sheet(table);
-        XLSX.utils.book_append_sheet(wb, ws, `Data_Mining_EcaWell_${i + 1}`);
+        XLSX.utils.book_append_sheet(wb, ws, `EcaWell_Analisis_${i + 1}`);
     });
-    XLSX.writeFile(wb, `Laporan_EcaWell_${activeMode}.xlsx`);
+    XLSX.writeFile(wb, `Laporan_DataMining_EcaWell.xlsx`);
 }
